@@ -6,9 +6,9 @@ fun main (){
             arrayOf(4,2,3),
             arrayOf(22,9,0))
 
-    val transposed = MatrixOperator(matrixTEST).Transpose()
+    val transposed = MatrixTools(matrixTEST).gaussRowEchelonReduction()
 
-    MatrixTools(transposed).matrixDisplayer()
+    print(transposed)
 
     MatrixTools(matrixTEST).matrixDisplayer()
 

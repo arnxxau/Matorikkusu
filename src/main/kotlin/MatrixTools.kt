@@ -70,6 +70,63 @@ class MatrixTools (m: Array<Array<Int>>){
     }
 
 
+    fun reducedRowEchelonForm(){
+        var lead = 0
+        val rowCount = matrixBase.size
+        val colCount = matrixBase[0].size
+
+
+        for (r in 0 until rowCount){
+            if (colCount <= lead) return
+
+            var i = r
+
+            while (matrixBase[i][lead] == 0){
+                i++
+                if (rowCount == i){
+                    i = r
+                    lead++
+
+                    if (colCount == lead) return
+                }
+            }
+
+            val temp = matrixBase[i]
+            matrixBase[i] = matrixBase[r]
+            matrixBase[r] = temp
+
+
+
+        }
+
+
+
+    }
+
+    fun gaussRowEchelonReduction(): MutableList<MutableList<Float>> {
+        var lead = 0
+        val rowCount = matrixBase.size
+        val colCount = matrixBase[0].size
+        val mainPivot = matrixBase[0][0]
+        var newMatrix = matrixBase.map { it.map { it.toFloat() }.toMutableList() }.toMutableList()
+
+        for ((i, row) in newMatrix.withIndex()){
+            if (i != 0){
+                val div: Float = (row[lead]/mainPivot.toFloat())
+                print(div)
+                for (c in 0 until colCount)
+                {
+
+
+                    row[c] = row[c] - mainPivot*div
+                }
+            }
+        }
+        return newMatrix
+    }
+
+
+
 
     fun matrixDisplayer(){
         println("|ᴍᴀᴛʀɪx INFO|")
