@@ -1,3 +1,5 @@
+import kotlin.math.round
+
 class MatrixTools (m: Array<Array<Int>>){
     private val matrixBase = m
 
@@ -103,24 +105,29 @@ class MatrixTools (m: Array<Array<Int>>){
 
     }
 
-    fun gaussRowEchelonReduction(): MutableList<MutableList<Float>> {
+    fun gaussRowEchelonReduction(): MutableList<MutableList<Double>> {
         var lead = 0
         val rowCount = matrixBase.size
         val colCount = matrixBase[0].size
-        val mainPivot = matrixBase[0][0]
-        var newMatrix = matrixBase.map { it.map { it.toFloat() }.toMutableList() }.toMutableList()
-
-        for ((i, row) in newMatrix.withIndex()){
-            if (i != 0){
-                val div: Float = (row[lead]/mainPivot.toFloat())
-                print(div)
-                for (c in 0 until colCount)
-                {
-
-
-                    row[c] = row[c] - mainPivot*div
-                }
-            }
+        val newMatrix = matrixBase.map { it.map { it.toDouble() }.toMutableList() }.toMutableList()
+        //the for will be looped until the number of loops matches the number of columns
+        while (lead != colCount) {
+             for ((i, row) in newMatrix.withIndex()){
+                 val mainPivot = newMatrix[lead][lead]
+               //omits the pivot row, in the first loop it will be the first sub array
+               if (i > lead) {
+                   //a div number between the
+                   val div: Double = (row[lead] / mainPivot)
+                   //print(div)
+                   for (c in 0 until colCount) {
+                       if (c + 1 != lead) {
+                           val new = row[c] - newMatrix[lead][c] * div
+                           row[c] = round(new * 1000000000000000) / 1000000000000000
+                       }
+                   }
+               }
+           }
+            lead++
         }
         return newMatrix
     }
