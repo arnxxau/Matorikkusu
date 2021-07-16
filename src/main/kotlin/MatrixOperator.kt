@@ -11,4 +11,8 @@ class MatrixOperator (m: Array<Array<Int>>){
         }
         return zeroMatrix.map { it.toTypedArray() }.toTypedArray()
     }
+
+    fun multiplyByNumber(){
+
+    }
 }

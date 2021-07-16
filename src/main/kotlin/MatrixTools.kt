@@ -1,5 +1,3 @@
-import kotlin.math.round
-
 class MatrixTools (m: Array<Array<Int>>){
     private val matrixBase = m
 
@@ -105,24 +103,109 @@ class MatrixTools (m: Array<Array<Int>>){
 
     }
 
+
+    private fun arraySortedOrNot(arr: MutableList<Boolean>, n: Int): Boolean {
+
+        var b = false
+        if (n == 1 || n == 0){
+            return true
+        }
+        if (arr[n - 1]){
+            b = true
+        }
+
+        if (!arr[n - 2] && b){
+            return false
+        }
+
+        return arraySortedOrNot(arr, n - 1)
+    }
+
     fun gaussRowEchelonReduction(): MutableList<MutableList<Double>> {
-        var lead = 0
-        val rowCount = matrixBase.size
-        val colCount = matrixBase[0].size
-        val newMatrix = matrixBase.map { it.map { it.toDouble() }.toMutableList() }.toMutableList()
+
+        val newMatrix = matrixBase.map {
+            it.map {
+                it.toDouble() }.toMutableList()
+        }.toMutableList()
+        val booleanArray = mutableListOf<Boolean>()
+
+        var zeroChecker = false
+        var loopBreaker0: Boolean
+        var loopBreaker1: Boolean
+        var orderLead = 0
+
+        fun matrixReorganizer(): Int {
+            fun booleanListCreator(){
+                loopBreaker0 = true
+                while (loopBreaker0) {
+                    booleanArray.clear()
+                    for (r in newMatrix) {
+                        if (r[orderLead] == 0.0) {
+                            booleanArray.add(false)
+                        } else {
+                            booleanArray.add(true)
+                        }
+                    }
+                    if (booleanArray.contains(true)){
+                        loopBreaker0 = false
+                    } else{
+                        orderLead++
+                    }
+                }
+            }
+
+            booleanListCreator()
+            if (booleanArray.contains(true)
+                &&! booleanArray.contains(false)) {
+                return -1
+            }
+
+            loopBreaker1 = true
+            while (loopBreaker1){
+                for ((i, b) in booleanArray.withIndex()){
+                    if (!b){
+                        zeroChecker = true
+                    }
+                    if (zeroChecker && b){
+                        println(i)
+                        val a1 = newMatrix[i-1]
+                        val a2 = newMatrix[i]
+                        newMatrix[i] = a1
+                        newMatrix[i-1] = a2
+                        zeroChecker =  false
+                    }
+                }
+                booleanListCreator()
+                val n = booleanArray.size
+                if (arraySortedOrNot(booleanArray, n)){
+                    loopBreaker1 = false
+                }
+            }
+            return 0
+        }
+
+
         //the for will be looped until the number of loops matches the number of columns
+
+        matrixReorganizer()
+        var lead = 0
+        val colCount = matrixBase[0].size
         while (lead != colCount) {
              for ((i, row) in newMatrix.withIndex()){
                  val mainPivot = newMatrix[lead][lead]
                //omits the pivot row, in the first loop it will be the first sub array
                if (i > lead) {
+                   if (mainPivot == 0.0){
+                       lead++
+                   }
                    //a div number between the
                    val div: Double = (row[lead] / mainPivot)
                    //print(div)
                    for (c in 0 until colCount) {
                        if (c + 1 != lead) {
                            val new = row[c] - newMatrix[lead][c] * div
-                           row[c] = round(new * 1000000000000000) / 1000000000000000
+                           row[c] = new
+                           //row[c] = round(new * 1000000000000000) / 1000000000000000
                        }
                    }
                }
@@ -131,6 +214,28 @@ class MatrixTools (m: Array<Array<Int>>){
         }
         return newMatrix
     }
+
+
+    fun matrixDeterminant(): Double? {
+        val mList = mutableListOf<Double>()
+        val m = gaussRowEchelonReduction()
+        if (verifyIntegrity() && isSquare()){
+            for (l in 0 until m.size){
+                mList.add(m[l][l])
+            }
+            return mList.reduce {
+                acc, d ->  acc * d
+            }
+        }
+        return null
+    }
+
+
+
+
+
+
+
 
 
 
