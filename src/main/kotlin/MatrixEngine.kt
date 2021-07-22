@@ -1,3 +1,10 @@
+package arnxxau.matorikkusu
+
+
+
+typealias mutableMatrix = MutableList<MutableList<Double>>
+typealias staticMatrix = Array<Array<Double>>
+
 fun main (){
 
 
@@ -5,10 +12,31 @@ fun main (){
 
     val matrixTEST: Array<Array<Int>> =
         arrayOf(
+            arrayOf(0,3,4,7),
             arrayOf(9,2,1,5),
-            arrayOf(3,3,4,7),
-            arrayOf(2,8,4,2),
+            arrayOf(0,8,4,2),
             arrayOf(5,7,3,2))
+
+
+
+    val mDouble = matrixTEST.intToDouble()
+
+
+    val matrix1: Array<Array<Int>> =
+        arrayOf(
+            arrayOf(1,2,3),
+            arrayOf(4,5,6))
+
+    val matrix2: Array<Array<Int>> =
+        arrayOf(
+            arrayOf(10,11),
+            arrayOf(20,21),
+            arrayOf(30,31))
+
+
+    println(MatrixOperator(matrix1.intToDouble()).multiplyMatrix(arrayOf(matrix1.intToDouble(), matrix2.intToDouble())))
+
+
 
     //val booleanArray = mutableListOf(true, false , true, false)
 
@@ -16,13 +44,20 @@ fun main (){
     //println(MatrixTools(matrixTEST).arraySortedOrNot(booleanArray, n))
 
 
-    val transposed = MatrixTools(matrixTEST).gaussRowEchelonReduction()
-    val determinant = MatrixTools(matrixTEST).matrixDeterminant()
+    //val transposed = MatrixTools(mDouble).gaussRowEchelonReduction()
+    //val determinant = MatrixTools(mDouble).determinant()
+    //val mult = MatrixOperator(mDouble).multiplyByNumber(10.0)
+    //val mm = MatrixProcessing().createUnitary(3,3)
+    //val mml = MatrixOperator(mDouble).transpose()
 
-    println(transposed)
-    println(determinant)
 
-    //MatrixTools(matrixTEST).matrixDisplayer()
+
+    //println(transposed)
+    //println(determinant)
+    //println(mm)
+
+
+    //MatrixTools(mm).matrixDisplayer()
 
 }
 
