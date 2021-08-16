@@ -38,6 +38,7 @@ fun main (){
 
 
 
+
     //val booleanArray = mutableListOf(true, false , true, false)
 
    // val n = booleanArray.size

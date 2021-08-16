@@ -1,5 +1,5 @@
 package arnxxau.matorikkusu
-class MatrixTools (m: Array<Array<Double>>){
+open class MatrixTools (m: Array<Array<Double>>){
     private val matrixBase = m
 
 
