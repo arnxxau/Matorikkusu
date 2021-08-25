@@ -36,10 +36,8 @@ open class MatrixProcessing {
         return arraySortedOrNot(arr, n - 1)
     }
 
-    fun compatibleMatrix(m1: staticMatrix, m2: staticMatrix): Boolean{
-        val m1Size = MatrixTools(m1).getSize()
-        val m2Size = MatrixTools(m2).getSize()
-        return m1Size[1] == m2Size[0]
+    fun compatibleMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): Boolean{
+        return m1.size.second == m2.size.first
     }
 }
 
