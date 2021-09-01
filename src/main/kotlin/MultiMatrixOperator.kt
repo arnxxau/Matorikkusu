@@ -3,14 +3,14 @@ package arnxxau.matorikkusu
 class MultiMatrixOperator {
 
     fun multiplyMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
-        val outputtedM = MatrixProcessing().createUnitary(m1.size.first, m1.size.second)
+        val outputtedM = MatrixProcessing().createUnitary(m1.size.first, m2.size.second)
 
         if (MatrixProcessing().compatibleMatrix(m1, m2)){
             var value = 0.0
 
             for ((indexRow, row) in outputtedM.withIndex()){
                 for (indexClm in 0 until row.size){
-                    for (l in 0..m1.size.first){
+                    for (l in 0 .. m1.size.first){
                         value += m1.multi_array[indexRow][l] * m2.multi_array[l][indexClm]
                     }
                     outputtedM[indexRow][indexClm] = value

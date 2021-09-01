@@ -1,8 +1,10 @@
 package arnxxau.matorikkusu
 
 class Matorikkusu {
-lateinit var base: mutableMatrix
+
+    var base = MatrixProcessing().createUnitary(1,1)
     fun loadTools(name: String): MatrixTools {
+
         for (m in mArr){
             if (m.name == name){
                 base = m.multi_array

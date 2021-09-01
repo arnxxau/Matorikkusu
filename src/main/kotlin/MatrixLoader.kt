@@ -18,7 +18,6 @@ class MatrixLoader {
 
 
     fun loadMatrix(arr: Array<staticMatrix>){
-        val newArr: MutableList<Matrix> = mutableListOf()
         val nameArr = listOf("A","B","C","D", "E"
             ,"F", "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R", "S",
@@ -26,7 +25,6 @@ class MatrixLoader {
         var c = 0
         for (m in arr){
             val base = m.staticToMutable()
-            val mt = MatrixTools(base)
 
             val loadedM = createMatrix(nameArr[c], base)
             if (loadedM != null){
@@ -34,7 +32,6 @@ class MatrixLoader {
                 c++
             }
         }
-        mArr = newArr
     }
 
 

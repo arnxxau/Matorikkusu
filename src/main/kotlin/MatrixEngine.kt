@@ -34,7 +34,13 @@ fun main (){
             arrayOf(30,31))
 
 
-    println(MatrixOperator(matrix1.intToDouble()).multiplyMatrix(arrayOf(matrix1.intToDouble(), matrix2.intToDouble())))
+
+    var arrm = arrayOf(matrix1.intToDouble(), matrix2.intToDouble())
+
+    MatrixLoader().loadMatrix(arrm)
+    var result = Matorikkusu().loadMultiOperators().chainMultiplication()
+    println(result)
+
 
 
 
