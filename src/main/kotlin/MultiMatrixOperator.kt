@@ -1,6 +1,6 @@
 package arnxxau.matorikkusu
 
-class MultiMatrixOperator {
+class MultiMatrixOperator internal constructor() {
 
     fun multiplyMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
         val outputtedM = MatrixProcessing().createUnitary(m1.size.first, m2.size.second)

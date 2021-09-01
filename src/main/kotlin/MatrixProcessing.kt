@@ -1,6 +1,6 @@
 package arnxxau.matorikkusu
 
-open class MatrixProcessing {
+internal class MatrixProcessing {
 
     fun createUnitary(numberOfRows: Int, numberOfColumns: Int): MutableList<MutableList<Double>> {
         val newMatrix = mutableListOf(mutableListOf<Double>())

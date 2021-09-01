@@ -1,5 +1,5 @@
 package arnxxau.matorikkusu
-open class MatrixTools (m: mutableMatrix){
+class MatrixTools internal constructor (m: mutableMatrix){
     private val base = m
 
 
