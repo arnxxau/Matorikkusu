@@ -1,6 +1,7 @@
 package arnxxau.matorikkusu
 
-open class MatrixOperator (m: mutableMatrix){
+
+class MatrixOperator internal constructor (m: mutableMatrix){
     private val base = m
 
     fun transpose(): mutableMatrix {

@@ -1,6 +1,6 @@
 package arnxxau.matorikkusu
 
-var mArr = mutableListOf<MatrixLoader.Matrix>()
+internal var mArr = mutableListOf<MatrixLoader.Matrix>()
 
 class MatrixLoader {
 
