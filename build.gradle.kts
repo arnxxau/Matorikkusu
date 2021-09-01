@@ -23,3 +23,16 @@ tasks.test {
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.arnxxau"
+            artifactId = project.name
+            version = version
+
+            from(components["kotlin"])
+            artifact(tasks["kotlinSourcesJar"])
+        }
+    }
+}
