@@ -25,7 +25,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Usage
 ### 1- First we need to load Matorikkusu with the Matrix that we want to operate.
 Matrix exist inside Matorikkusu as an _**arrays of arrays containing Double numbers**_ -> `Array<Array<Double>>`  
-Alternatively we can use an existing extension within Matorikkusu called `.intToDouble` which will convert `Array<Array<Int>>` into `Array<Array<Double>>` as showed in the example.
+Alternatively we can use an existing extension within Matorikkusu called `.intToDouble` which will convert `Array<Array<Int>>` into `Array<Array<Double>>` as shown in the example.
 
     //Declaring the Matrix
     val matrix1: Array<Array<Double>> =
@@ -54,7 +54,7 @@ Alternatively we can use an existing extension within Matorikkusu called `.intTo
     MatrixLoader().loadMatrix(arrayOfMatrix)
 
 ### 2- After loading the Matrix into Matorikkusu we can then start to operate with them.
-It is important to know that Matorikkusu **will assign a name to each loaded Matrix**. For example looking at the piece of code showed above:
+It is important to know that Matorikkusu **will assign a name to each loaded Matrix**. For example looking at the piece of code shown above:
 
     matrix1 -> "A"  
     matrix2 -> "B"   
@@ -99,7 +99,7 @@ Contains:
 ~~~
 
 ## Future updates
-It is expected for Matorikkusu to contain an Operator Interpreter in order to operate between without having to call the specified function:  
+It is expected for Matorikkusu to contain an Operator Interpreter in order to operate between Matrix without having to call the specified function:
 `"(A * B + C) * D"`.  
 It is also expected to run some code optimisations regarding the multiplication algorithm which seems to be the most resource demanding at the moment.
 ## Thanks for using Matorikkusu :)!
