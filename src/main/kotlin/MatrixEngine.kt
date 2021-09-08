@@ -39,6 +39,7 @@ fun main (){
 
     MatrixLoader().loadMatrix(arrm)
     var result = Matorikkusu().loadMultiOperators().chainMultiplication()
+    Matorikkusu().loadOperators("A").transpose()
     println(result)
 
 

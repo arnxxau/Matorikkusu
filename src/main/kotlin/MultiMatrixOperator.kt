@@ -2,7 +2,7 @@ package arnxxau.matorikkusu
 
 class MultiMatrixOperator internal constructor() {
 
-    fun multiplyMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
+    internal fun multiplyMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
         val outputtedM = MatrixProcessing().createUnitary(m1.size.first, m2.size.second)
 
         if (MatrixProcessing().compatibleMatrix(m1, m2)){
@@ -28,7 +28,7 @@ class MultiMatrixOperator internal constructor() {
     }
 
 
-    fun sumMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): MutableList<MutableList<Double>> {
+    internal fun sumMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): MutableList<MutableList<Double>> {
         val outputtedM = MatrixTools(m1.multi_array).createMirrorUnitary()
         if (m1.size == m2.size){
             for (firstIndex in 0 until m1.size.first){
@@ -48,7 +48,7 @@ class MultiMatrixOperator internal constructor() {
     }
 
 
-    fun subtractMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
+    internal fun subtractMatrix(m1: MatrixLoader.Matrix, m2: MatrixLoader.Matrix): mutableMatrix {
         m2.multi_array = MatrixOperator(m2.multi_array).multiplyByNumber(-1.0)
         return sumMatrix(m1,m2)
     }
