@@ -4,10 +4,10 @@ class MatrixTools internal constructor (m: mutableMatrix){
 
 
 
-    fun createMirrorUnitary(): MutableList<MutableList<Double>> {
+    fun createMirrorUnitary(): mutableMatrix {
         return MatrixProcessing().createUnitary(base.size, base[0].size)
     }
-    fun createMirrorReversedUnitary(): MutableList<MutableList<Double>> {
+    fun createMirrorReversedUnitary(): mutableMatrix {
         return MatrixProcessing().createUnitary(base[0].size, base.size)
     }
 
@@ -45,29 +45,23 @@ class MatrixTools internal constructor (m: mutableMatrix){
         return Pair(numberOfRows, numberOfColumns)
     }
 
-
-
-
     fun gaussRowEchelonReduction(): Pair<mutableMatrix, Int> {
 
         val (outputtedM, numberOfChanges) = MatrixOperator(base).matrixReorganizer()
         //the for will be looped until the number of loops matches the number of columns
-        var lead = 0
-        val colCount = base[0].size
+        var lead = 0; val colCount = base[0].size
         while (lead != colCount && MatrixTools(outputtedM).isSquare()) {
-            for ((i, row) in outputtedM.withIndex()) {
+            for ((idx, row) in outputtedM.withIndex()) {
                 val mainPivot = outputtedM[lead][lead]
                 //omits the pivot row, in the first loop it will be the first sub array
-                if (i > lead) {
-                    if (mainPivot == 0.0) {
-                        lead++
-                    }
+                if (idx > lead) {
+                    if (mainPivot == 0.0) lead++
                     //a div number between the
                     val div: Double = (row[lead] / mainPivot)
-                    for (c in 0 until colCount) {
-                        if (c + 1 != lead) {
-                            val new = row[c] - outputtedM[lead][c] * div
-                            row[c] = new
+                    for (clm in 0 until colCount) {
+                        if (clm + 1 != lead) {
+                            val new = row[clm] - outputtedM[lead][clm] * div
+                            row[clm] = new
                         }
                     }
                 }
@@ -76,7 +70,6 @@ class MatrixTools internal constructor (m: mutableMatrix){
         }
         return Pair(outputtedM, numberOfChanges)
     }
-
 
     fun determinant(): Double? {
         val mList = mutableListOf<Double>()
@@ -91,16 +84,7 @@ class MatrixTools internal constructor (m: mutableMatrix){
         }
         return null
     }
-
-
-
-
-
-
-
-
-
-
+    
 
     fun matrixDisplayer(){
         println("|ᴍᴀᴛʀɪx INFO|")
