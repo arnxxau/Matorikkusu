@@ -18,7 +18,7 @@ Add it in your root build.gradle at the end of repositories:
 #### Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.arnxxau:Matorikkusu:v1.0.0-beta'
+	        implementation 'com.github.arnxxau:Matorikkusu:v1.0.1-beta'
 	}
 
 
